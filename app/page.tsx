@@ -24,6 +24,9 @@ export default function Home() {
         <LoginButton>
           <Button size={"lg"}>Sign in</Button>
         </LoginButton>
+        <LoginButton>
+          <Button size={"lg"}>Sign up</Button>
+        </LoginButton>
       </div>
     </main>
   );
