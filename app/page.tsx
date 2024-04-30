@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
-import { LoginButton } from "@/components/login-button";
+import { LoginButton } from "@/components/auth/login-button";
 
 const font = Poppins({
   weight: "600",
