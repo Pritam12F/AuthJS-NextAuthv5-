@@ -6,22 +6,18 @@ interface LoginButtonProps {
   children: React.ReactNode;
   mode?: "modal" | "redirect";
   asChild?: boolean;
-  typeofb?: "signup" | "signin";
+  href?: string;
 }
 
 export const LoginButton = ({
   children,
   mode = "modal",
   asChild,
-  typeofb = "signin",
+  href,
 }: LoginButtonProps) => {
   const router = useRouter();
   const onClickHandler = () => {
-    if (typeofb == "signin") {
-      router.push("/signin");
-    } else {
-      router.push("/signup");
-    }
+    router.push(`/${href}`);
   };
   return (
     <span className="cursor-pointer inline-block mx-2" onClick={onClickHandler}>

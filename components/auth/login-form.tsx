@@ -1,31 +1,29 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { LoginButton } from "./login-button";
+import { CardWrapper } from "../elements/cardWrapper";
 
-type Props = {
-  typeofform: "signup" | "signin";
-};
+interface LoginFormProps {
+  typeofform: "Sign Up" | "Sign In";
+}
 
-export const LoginForm = ({ typeofform }: Props) => {
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Card Title</CardTitle>
-        <CardDescription>Card Description</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p>Card Content</p>
-      </CardContent>
-      <CardFooter>
-        <p>Card Footer</p>
-      </CardFooter>
-    </Card>
-  );
+export const LoginForm = ({ typeofform }: LoginFormProps) => {
+  if (typeofform === "Sign In") {
+    return (
+      <CardWrapper
+        backLabel="Don't have an account?"
+        backFuncLabel="Sign up"
+        backFuncHref="/signup"
+        typeofcard={typeofform}
+        btnLabel="Sign in"
+      />
+    );
+  } else {
+    return (
+      <CardWrapper
+        backLabel="Already have an account?"
+        backFuncLabel="Log in"
+        backFuncHref="/signin"
+        typeofcard={typeofform}
+        btnLabel="Sign Up"
+      />
+    );
+  }
 };

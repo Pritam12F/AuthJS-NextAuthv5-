@@ -18,13 +18,13 @@ export default function Home() {
             font.className
           )}
         >
-          &#128274; Auth
+          &#128274; Venmo - Auth page
         </h2>
         <p className="text-2xl">Login with your credentials</p>
-        <LoginButton>
+        <LoginButton href="signin">
           <Button size={"lg"}>Sign in</Button>
         </LoginButton>
-        <LoginButton>
+        <LoginButton href="signup">
           <Button size={"lg"}>Sign up</Button>
         </LoginButton>
       </div>
