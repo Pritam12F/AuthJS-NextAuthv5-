@@ -9,20 +9,24 @@ interface AlertProps {
 
 export const AlertDestructive = ({ title, description }: AlertProps) => {
   return (
-    <Alert variant="destructive">
-      <ExclamationTriangleIcon className="h-4 w-4" />
-      <AlertTitle>{title}</AlertTitle>
-      <AlertDescription>{description}</AlertDescription>
-    </Alert>
+    <div className="p-2 mt-2 -mb-4">
+      <Alert variant="destructive">
+        <ExclamationTriangleIcon className="h-4 w-4" />
+        <AlertTitle>{title}</AlertTitle>
+        <AlertDescription>{description}</AlertDescription>
+      </Alert>
+    </div>
   );
 };
 
 export const AlertDefault = ({ title, description }: AlertProps) => {
   return (
-    <Alert variant="default">
-      <ExclamationTriangleIcon className="h-4 w-4" />
-      <AlertTitle>{title}</AlertTitle>
-      <AlertDescription>{description}</AlertDescription>
-    </Alert>
+    <div className="p-2 mt-2 -mb-4">
+      <Alert variant="default">
+        <ExclamationTriangleIcon className="h-4 w-4" />
+        <AlertTitle>{title}</AlertTitle>
+        <AlertDescription>{description}</AlertDescription>
+      </Alert>
+    </div>
   );
 };
