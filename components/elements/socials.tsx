@@ -6,7 +6,7 @@ import { Button } from "../ui/button";
 
 export const SocialsBar = () => {
   return (
-    <div className="flex justify-start my-4">
+    <div className="flex justify-center my-4 w-full">
       <Button
         variant={"outline"}
         className="mx-2 drop-shadow-md"

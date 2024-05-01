@@ -1,11 +1,11 @@
 import { CardWrapper } from "../elements/cardWrapper";
 import { FormWrapper } from "../elements/formWrapper";
 
-interface LoginFormProps {
+interface AuthFormProps {
   typeofform: "Sign Up" | "Sign In";
 }
 
-export const LoginForm = ({ typeofform }: LoginFormProps) => {
+export const AuthForm = ({ typeofform }: AuthFormProps) => {
   if (typeofform === "Sign In") {
     return (
       <CardWrapper
@@ -14,7 +14,7 @@ export const LoginForm = ({ typeofform }: LoginFormProps) => {
         backFuncHref="signup"
         typeofcard={typeofform}
       >
-        <FormWrapper typeofform="Sign In" />
+        <FormWrapper typeofform={typeofform} />
       </CardWrapper>
     );
   } else {
@@ -25,7 +25,7 @@ export const LoginForm = ({ typeofform }: LoginFormProps) => {
         backFuncHref="signin"
         typeofcard={typeofform}
       >
-        <FormWrapper typeofform="Sign Up" />
+        <FormWrapper typeofform={typeofform} />
       </CardWrapper>
     );
   }

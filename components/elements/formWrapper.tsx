@@ -4,7 +4,6 @@ import {
   Form,
   FormField,
   FormControl,
-  FormDescription,
   FormItem,
   FormLabel,
   FormMessage,
@@ -39,9 +38,10 @@ export const FormWrapper = ({ typeofform }: FormWrapperProps) => {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+    if (typeofform === "Sign Up") {
+      if (values.password != values.confpass) {
+      }
+    }
   }
 
   return (
@@ -88,7 +88,9 @@ export const FormWrapper = ({ typeofform }: FormWrapperProps) => {
             )}
           />
         ) : null}
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="w-full">
+          {typeofform}
+        </Button>
       </form>
     </Form>
   );

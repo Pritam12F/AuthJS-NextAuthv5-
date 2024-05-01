@@ -27,7 +27,7 @@ export const CardWrapper = ({
   children,
 }: Props) => {
   return (
-    <Card className="w-[400px]">
+    <Card className="w-[350px]">
       <CardHeader>
         <CardTitle>
           <Header>{typeofcard}</Header>
@@ -38,14 +38,9 @@ export const CardWrapper = ({
           </BackButton>
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        {children}
-        <SocialsBar />
-      </CardContent>
+      <CardContent>{children}</CardContent>
       <CardFooter className="flex justify-center">
-        <Button variant={"default"} size={"xl"}>
-          {typeofcard}
-        </Button>
+        <SocialsBar />
       </CardFooter>
     </Card>
   );
