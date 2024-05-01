@@ -12,7 +12,9 @@ export const LoginForm = ({ typeofform }: LoginFormProps) => {
         backFuncLabel="Sign up"
         backFuncHref="signup"
         typeofcard={typeofform}
-      />
+      >
+        Sign in form
+      </CardWrapper>
     );
   } else {
     return (
@@ -21,7 +23,9 @@ export const LoginForm = ({ typeofform }: LoginFormProps) => {
         backFuncLabel="Log in"
         backFuncHref="signin"
         typeofcard={typeofform}
-      />
+      >
+        Sign up form
+      </CardWrapper>
     );
   }
 };

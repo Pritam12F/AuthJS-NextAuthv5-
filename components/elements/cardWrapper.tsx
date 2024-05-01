@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Header } from "./header";
-import { InputsForm } from "./Inputs";
 import { SocialsBar } from "./socials";
 import { BackButton } from "./back-button";
 
@@ -17,6 +16,7 @@ type Props = {
   backFuncLabel?: string;
   backFuncHref: string;
   typeofcard: "Sign Up" | "Sign In";
+  children: React.ReactNode;
 };
 
 export const CardWrapper = ({
@@ -24,6 +24,7 @@ export const CardWrapper = ({
   backFuncLabel,
   backLabel,
   typeofcard,
+  children,
 }: Props) => {
   return (
     <Card className="w-[400px]">
@@ -38,7 +39,7 @@ export const CardWrapper = ({
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <InputsForm typeofcard={typeofcard} />
+        {children}
         <SocialsBar />
       </CardContent>
       <CardFooter className="flex justify-center">
