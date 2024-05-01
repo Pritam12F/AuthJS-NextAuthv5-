@@ -10,9 +10,8 @@ export const LoginForm = ({ typeofform }: LoginFormProps) => {
       <CardWrapper
         backLabel="Don't have an account?"
         backFuncLabel="Sign up"
-        backFuncHref="/signup"
+        backFuncHref="signup"
         typeofcard={typeofform}
-        btnLabel="Sign in"
       />
     );
   } else {
@@ -20,9 +19,8 @@ export const LoginForm = ({ typeofform }: LoginFormProps) => {
       <CardWrapper
         backLabel="Already have an account?"
         backFuncLabel="Log in"
-        backFuncHref="/signin"
+        backFuncHref="signin"
         typeofcard={typeofform}
-        btnLabel="Sign Up"
       />
     );
   }
