@@ -4,13 +4,13 @@ import { Button } from "../ui/button";
 interface BackButtonProps {
   children?: React.ReactNode;
   backFuncHref: string;
-  backFuncLabel?: string;
+  backLabel?: string;
 }
 
 export const BackButton = ({
   backFuncHref,
-  backFuncLabel,
   children,
+  backLabel,
 }: BackButtonProps) => {
   return (
     <span className="-space-x-2">

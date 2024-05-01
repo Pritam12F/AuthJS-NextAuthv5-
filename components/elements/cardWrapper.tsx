@@ -32,8 +32,8 @@ export const CardWrapper = ({
           <Header>{typeofcard}</Header>
         </CardTitle>
         <CardDescription className="pt-2 text-center">
-          <BackButton backFuncHref={backFuncHref} backFuncLabel={backFuncLabel}>
-            {backLabel}
+          <BackButton backFuncHref={backFuncHref} backLabel={backLabel}>
+            {backFuncLabel}
           </BackButton>
         </CardDescription>
       </CardHeader>
