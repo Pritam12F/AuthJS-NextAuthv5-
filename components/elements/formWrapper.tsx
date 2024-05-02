@@ -15,6 +15,9 @@ import { loginSchema, signupSchema } from "@/validation";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { login } from "@/actions/login";
+import { useState, useTransition } from "react";
+import { signup } from "@/actions/signup";
+import { AlertDefault, AlertDestructive } from "./alerts";
 
 interface FormWrapperProps {
   typeofform: "Sign Up" | "Sign In";
@@ -22,6 +25,9 @@ interface FormWrapperProps {
 
 export const FormWrapper = ({ typeofform }: FormWrapperProps) => {
   let formSchema: typeof loginSchema | typeof signupSchema;
+  const [isPending, setTransition] = useTransition();
+  const [error, setError] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
 
   if (typeofform === "Sign In") {
     formSchema = loginSchema;
@@ -39,7 +45,29 @@ export const FormWrapper = ({ typeofform }: FormWrapperProps) => {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    login(values);
+    setError("");
+    setSuccess("");
+    if (typeofform === "Sign In") {
+      setTransition(() => {
+        login(values)
+          .then((res) => {
+            setSuccess(res.message);
+          })
+          .catch((err) => {
+            setError(err.error);
+          });
+      });
+    } else {
+      setTransition(() => {
+        signup(values)
+          .then((res) => {
+            setSuccess(res.message);
+          })
+          .catch((err) => {
+            setError(err.error);
+          });
+      });
+    }
   }
 
   return (
@@ -52,7 +80,11 @@ export const FormWrapper = ({ typeofform }: FormWrapperProps) => {
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="Enter email id" {...field} />
+                <Input
+                  placeholder="Enter email id"
+                  {...field}
+                  disabled={isPending}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -65,7 +97,12 @@ export const FormWrapper = ({ typeofform }: FormWrapperProps) => {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input placeholder="******" {...field} type="password" />
+                <Input
+                  placeholder="******"
+                  {...field}
+                  type="password"
+                  disabled={isPending}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -79,13 +116,20 @@ export const FormWrapper = ({ typeofform }: FormWrapperProps) => {
               <FormItem>
                 <FormLabel>Confirm password</FormLabel>
                 <FormControl>
-                  <Input placeholder="******" {...field} type="password" />
+                  <Input
+                    placeholder="******"
+                    {...field}
+                    type="password"
+                    disabled={isPending}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
         ) : null}
+        <AlertDestructive description={error} />
+        <AlertDefault description={success} />
         <Button type="submit" className="w-full">
           {typeofform}
         </Button>
