@@ -14,6 +14,7 @@ import { z } from "zod";
 import { loginSchema, signupSchema } from "@/validation";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import { login } from "@/actions/login";
 
 interface FormWrapperProps {
   typeofform: "Sign Up" | "Sign In";
@@ -38,7 +39,7 @@ export const FormWrapper = ({ typeofform }: FormWrapperProps) => {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    login(values);
   }
 
   return (
