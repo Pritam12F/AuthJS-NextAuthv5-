@@ -14,8 +14,6 @@ import { z } from "zod";
 import { loginSchema, signupSchema } from "@/validation";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { AlertDestructive } from "./alerts";
-import { useState } from "react";
 
 interface FormWrapperProps {
   typeofform: "Sign Up" | "Sign In";
@@ -23,7 +21,6 @@ interface FormWrapperProps {
 
 export const FormWrapper = ({ typeofform }: FormWrapperProps) => {
   let formSchema: typeof loginSchema | typeof signupSchema;
-  const [notMatch, setNotMatch] = useState<boolean>(false);
 
   if (typeofform === "Sign In") {
     formSchema = loginSchema;
@@ -41,13 +38,7 @@ export const FormWrapper = ({ typeofform }: FormWrapperProps) => {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    if (typeofform === "Sign Up") {
-      if (values.password != values.confpass) {
-        setNotMatch(true);
-      } else {
-        setNotMatch(false);
-      }
-    }
+    console.log(values);
   }
 
   return (
@@ -98,12 +89,6 @@ export const FormWrapper = ({ typeofform }: FormWrapperProps) => {
           {typeofform}
         </Button>
       </form>
-      {notMatch ? (
-        <AlertDestructive
-          title={"Error"}
-          description={"Passwords don't match"}
-        />
-      ) : null}
     </Form>
   );
 };
